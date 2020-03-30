@@ -954,3 +954,42 @@ body.lb-disable-scrolling {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
+
+/* heading */
+.heading-bg{
+	background-image: url(../img/heading-bg.png);
+	background-position: center;
+	background-size: cover;
+	width: 100%;
+	padding: 40px;
+	top: 0px;
+	left: 0px;
+	display: flex;
+	justify-content: center;
+	color: white;
+}
+.heading-bg h3{
+
+}
+.mainquestion{
+	background-color: #0b1222;
+	padding: 30px;
+	margin: 40px auto;
+	width: 76%;
+	border-radius: 10px;
+	color: white;
+}
+.answer{
+	width: 60%;
+	margin: 40px auto;
+}
+.answer .img{
+	margin: 20px auto;
+}
+.answer .img img{
+	border-radius: 5px;
+}
+.answer h4{
+	font-size: 2.4rem;
+	line-height: 1.7em;
+}
