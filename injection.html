@@ -1,0 +1,91 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <title>skaushik.co</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/fontAwesome.css">
+        <link rel="stylesheet" href="css/tooplate-style.css">
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    </head>
+    <body>
+        
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+        </ul>
+      </nav>
+      <section class="heading-bg">
+        <div>
+                <div class="line-dec"></div>
+                <h1>Inj3ction Time</h1>
+                <div class="line-dec"></div>
+                <h3>Web/SQL</h3>
+        </div>
+      </section>
+       
+      <section class="about">
+        <div class="mainquestion">
+          <h3>I stumbled upon this website: <a href="http://web.ctflearn.com/web8/">http://web.ctflearn.com/web8/</a> and I think they have the flag in their somewhere. UNION might be a helpful command</h3>
+        </div>
+        <div class="answer">
+          <h4>As the <a href="https://ctflearn.com/challenge/149">question</a> gives us a link as we go to that website it shows a <strong>id</strong> input and a entry is already shown.
+            So for input in id we try using name, number and number respond with some entry. <i>(1,2,3)</i> So id is number now we try using sql injection as shown below 
+        </h4>
+        <div class="code">
+          1 or 1=1
+        </div>
+        <h4>This respond with each entry in that table but nothing with flag so we have to try something else. As question already gave us a hint about <strong>UNION</strong> so let's try this.</h4>
+          <h4>But first for union to work the other table must return same number of entry as first table so we first check with dual table the number of entry first table returns and with four entry is send some response.
+          </h4>
+          <div class="code">
+            1 union select 1,1,1,1 from dual
+          </div>
+
+        <h4>Now we find the name of tables under this database</h4>
+        <div class="code">
+          1 union select 1,TABLE_NAMES,1,1 from INFORMATION_SCHEMA.TABLES
+        </div>
+        <h4>And this return the name of all the tables with so many names one name is different <strong>"w0w_y0u_f0und_m3"</strong> and we try using that as a flag but this is not flag so flag must be inside it.Now we don't know how many rows are inside that table and what is their names so let's find out.</h4>
+        <div class="code">1 Union SELECT 1,column_name,table_name,1 FROM information_schema.columns</div>
+        <h4>This table has only one column names <strong>"f0und_m3"</strong> but this isn't a flag either.So the content inside it has to be flag.</h4>
+        <div class="code">1 union select 1,f0und_m3,1,1 from w0w_y0u_f0und_m3</div>
+        <h4>And you get the flag.</h4>
+        </div>
+      </section>
+
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="join">Want to Contribute Join us on Github</div>
+              <a target="_blank" href="https://github.com/sarthak212/ctf-one/issues/2"><i class="fa fa-github i"></i></a>
+              <p>Copyright &copy; skaushik.co 
+            </div>
+          </div>
+        </div>
+      </footer>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+    </body>
+</html>
