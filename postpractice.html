@@ -1,0 +1,83 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <title>skaushik.co</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/fontAwesome.css">
+        <link rel="stylesheet" href="css/tooplate-style.css">
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    </head>
+    <body>
+        
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+        </ul>
+      </nav>
+      <section class="heading-bg">
+        <div>
+                <div class="line-dec"></div>
+                <h1>Post Practice</h1>
+                <div class="line-dec"></div>
+                <h3>Web/Python</h3>
+        </div>
+      </section>
+       
+      <section class="about">
+        <div class="mainquestion">
+          <h3>These website requires authentication, via POST. However, it seems as if someone has defaced our site. Maybe these is still some way to authenticate? <a href="http://165.227.106.113/post.php">http://165.227.106.113/post.php</a></h3>
+        </div>
+        <div class="answer">
+          <h4>As the <a href="https://ctflearn.com/challenge/114">question</a> gives us a link and give us a hint about some post request so 
+            we should try sending post request to this link. In this case I am using python. So first we make a simple post request to this address. 
+        </h4>
+        <div class="img">
+          <img src="img/postpractice0.png" alt="">
+        </div>
+        <h4>Response send that you have to make post request and it also gives username and password in comments.We try using auth variable but didn't get lucky it respond same thing</h4>
+        <div class="code">requests.post(url, auth=('username','71urlkufpsdnlkadsf')</div>
+          <h4>Now may be it is using different type of authetication so after trying different things we get lucky with data as sending username and password as payload with request.
+          </h4>
+        <div class="img">
+          <img src="img/postpractice.png" alt="">
+        </div>
+        <h4>And voila you get your flag.</h4>
+        </div>
+      </section>
+
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="join">Want to Contribute Join us on Github</div>
+              <a target="_blank" href="https://github.com/sarthak212/ctf-one/issues/2"><i class="fa fa-github i"></i></a>
+              <p>Copyright &copy; skaushik.co 
+            </div>
+          </div>
+        </div>
+      </footer>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+    </body>
+</html>
