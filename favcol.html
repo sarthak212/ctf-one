@@ -31,37 +31,61 @@
       <section class="heading-bg">
         <div>
                 <div class="line-dec"></div>
-                <h1>Don't Bump Your Head(er)</h1>
+                <h1>Favourite Color</h1>
                 <div class="line-dec"></div>
-                <h3>Web/Python</h3>
+                <h3>Binary/Reverse Engineering</h3>
         </div>
       </section>
        
       <section class="about">
         <div class="mainquestion">
-          <h3>Try to bypass my security measure on this site! http://165.227.106.113/header.php</h3>
+          <h3>What's your favorite color? Would you like to share with me? Run the command: ssh color@104.131.79.111 -p 1001 (pw: guest) to tell me!</h3>
         </div>
         <div class="answer">
-          <h4>As the <a href="https://ctflearn.com/challenge/109">question</a> gives us a link first thing everybody does is to check that link we can do this by either
-          using web browser or by using a script.You can use any language that support http request for script but We are going to use python.
+          <h4>As the <a href="https://ctflearn.com/challenge/391">question</a> gives us a ssh connection to a remote server so we check what file it contain and we found these files.
         </h4>
         <div class="img">
-          <img src="db0.png" alt="">
+          <img src="img/favcol0.png" alt="">
         </div>
-        <h4>Now after getting response "It seems your user agent is not correct" we get our user agent has to be different for server to send something interesting
-          but what? So I look for another clue and i found a commeted keyword "Sup3rS3cr3tAg3nt" in response.
-          So I tried using this keyword as user agent and guess what i found.</h4>
-          <div class="img">
-            <img src="db1.png" alt="">
+        <h4>In this server we found a c file, a binary file, a Makefile and a flag file obviously we cannot open that flag file but after reading that c code we see that it can be opened from that binary file if we get a certain condition so we download that c and binary file from server with <strong>scp</strong></h4>
+          <div class="code">
+            $ scp -P 1001 color@104.131.79.111:~/color Your_Directory_Path <br>
+            $ scp -P 1001 color@104.131.79.111:~/color.c Your_Directory_Path
           </div>
-          <h4>Another problem  'Sorry, it seems as if you did not just come from the site, "awesomesauce.com"''.
-            So now our request should came from awesomesauce.com for that we use referer in header as awesomesause.com
+          <h4>Now from the c file we see that to satisfy that condition vuln() function should return <code><strong>True</strong>
+          </code> but that never happen because it return a output of xor of a number with itself, which is going to be zero always.
+          So we have to find a bug in that file and after reading code we found one <strong>gets</strong> function is deprecated because it doesn't check for termination character so this can lead to buffer overflow.
+          now we have to find how to use this, for that we have to examine that file and for that i am going to use <strong>IDE</strong> software
+          To follow along you should know little bit about assembly language and about IDA for ida you can follow this <a href="http://www-verimag.imag.fr/~mounier/Enseignement/Software_Security/BH_Eagle_ida_pro.pdf">link</a>
           </h4>
+          <div class="img">
+            <img src="img/fav1.png" alt="">
+          </div>
+        <h4>To get the flag we have to go to the location of sub esp, 0Ch in side function.Now let's examine the function where it takes the entry for favourite color</h4>
         <div class="img">
-          <img src="db2.png" alt="">
+          <img src="img/fav2.png" alt="">
         </div>
-        <h4>And voila you get your flag.</h4>
+        <h4>Here lea command subract 48 bytes from the stack to make the entry from gets beside it there is 4 byte ebp is already above this 48 bytes so 
+          the stack looks like <strong><code>EIP(return address 4bytes) ->EBP(4bytes) ->48bytes</code></strong>. To make this work we have to enter 52 bytes of junk and then return address of line we want to go to. 
+          Now we just have to check whether system is little-ending or big-ending, it's just the encoding technique in little-ending address is stored in reverse order and in big-ending normal order. You can check this with <strong>lscpu</strong>
+
+        </h4>
+        <div class="code">
+          lscpu | grep Order
+        </div>        
+        <h4>The system is little-ending so reverse order now we just have to write a python script to work.</h4>
+        <div class="code">
+          a = 'a'*52 <br>
+          b = '\x57\x86\x04\x08' <br>
+          print(a+b) <br>
         </div>
+        <h4>Now store that script to /tmp folder in server and then run</h4>
+        <div class="code">
+          $ (python /tmp/abc.py; cat) | ./color
+        </div>
+        <h4>And you get a shell now you know what to do</h4>
+        <div class="code">cat flag.txt</div>
+      </div>
       </section>
 
       <footer>
