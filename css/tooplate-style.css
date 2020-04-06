@@ -371,7 +371,7 @@ p {
 
 footer {
 	text-align: center;
-	background-image: url(../img/footer-bg.png);
+	background-image: url(../img/other/footer-bg.png);
 	background-size: cover;
 	width: 100%;
 	background-repeat: no-repeat;
@@ -410,7 +410,7 @@ footer a:hover {
 ======================*/
 
 .first-gallery-section {
-	background-image: url(../img/background.png);
+	background-image: url(../img/other/background.png);
 	background-size: cover;
 	width: 100%;
 	background-repeat: no-repeat;
@@ -715,12 +715,6 @@ footer a:hover {
 /*========================================
 ----------- LIGHT BOX STYLE ------------
 ========================================*/
-
-/* Preload images */
-body:after {
-  content: url(../img/close.png) url(../img/loading.gif) url(../img/prev.png) url(../img/next.png);
-  display: none;
-}
 
 body.lb-disable-scrolling {
   overflow: hidden;

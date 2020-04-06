@@ -56,7 +56,7 @@
         so we check what file it contain and we found these files.
       </h4>
       <div class="img">
-        <img src="img/favcol0.png" alt="">
+        <img src="../img/post/favcol/favcol0.png" alt="Favourite Color">
       </div>
       <h4>In this server we found a c file, a binary file, a Makefile and a flag file obviously we cannot open that flag
         file but after reading that c code we see that it can be opened from that binary file if we get a certain
@@ -77,12 +77,12 @@
           href="http://www-verimag.imag.fr/~mounier/Enseignement/Software_Security/BH_Eagle_ida_pro.pdf">link</a>
       </h4>
       <div class="img">
-        <img src="img/fav1.png" alt="">
+        <img src="../img/post/favcol/fav1.png" alt="">
       </div>
       <h4>To get the flag we have to go to the location of sub esp, 0Ch in side function.Now let's examine the function
         where it takes the entry for favourite color</h4>
       <div class="img">
-        <img src="img/fav2.png" alt="">
+        <img src="../img/post/favcol/fav2.png" alt="">
       </div>
       <h4>Here lea command subract 48 bytes from the stack to make the entry from gets beside it there is 4 byte ebp is
         already above this 48 bytes so
@@ -122,16 +122,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- Scripts -->
-  <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <script>
-    window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')
-  </script>
-  <script src="js/vendor/bootstrap.min.js"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
 
 </body>
 
