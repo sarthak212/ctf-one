@@ -249,6 +249,9 @@ nav ul li{
 .answer .img{
 	margin: 20px auto;
 }
+.answer .img::-webkit-scrollbar { width: 0 !important }
+.answer .img { overflow: -moz-scrollbars-none; }
+.answer .img { -ms-overflow-style: none; }
 .answer .img img{
 	border-radius: 5px;
 }
@@ -270,4 +273,31 @@ nav ul li{
 	padding: 15px;
 	font-weight: 600;
 	margin: 15px 0px;
+}
+@media screen and (max-width: 940px){
+	.answer,.mainquestion,.heading-bg{
+		width: 70%;
+	}
+	.answer .img{
+		overflow-x: scroll;
+	}
+}
+@media screen and (max-width: 750px){
+	.answer,.mainquestion,.heading-bg{
+		width: 80%;
+	}
+}
+@media screen and (max-width: 540px){
+	.answer,.mainquestion,.heading-bg{
+		width: 90%;
+	}
+	.answer h4,.mainquestion h3{
+		font-size: 1.8rem;
+	}
+	.heading-bg h1{
+		font-size: 2.5rem;
+	}
+	.heading-bg h3{
+		font-size: 2.1rem;
+	}
 }
