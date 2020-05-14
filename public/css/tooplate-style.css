@@ -87,7 +87,7 @@ footer a:hover {
 	color: #fff;
 }
 
-.first-gallery-section .text-content h2 {
+.first-gallery-section .text-content h1 {
 	font-size: 44px;
 	text-transform: uppercase;
 	font-weight: 900;
@@ -198,7 +198,25 @@ footer a:hover {
 		padding: 200px 0px 20px 0px;
 	}
 }
-
+.notfound{
+	width: 60%;
+	margin: 20px auto;
+}
+.notfound h2{
+	font-weight: bolder;
+	font-size: 2.5rem;
+	margin-bottom: 120px;
+}
+.notfound a{
+	padding: 13px 18px;
+	background-color: #415b90;
+	color: white;
+	border-radius: 5px;
+	font-weight: 600;
+}
+.notfound a:hover{
+	text-decoration: none;
+}
 /* heading */
 
 nav{
@@ -274,6 +292,25 @@ nav ul li{
 	font-weight: 600;
 	margin: 15px 0px;
 }
+.notfound{
+	width: 60%;
+	margin: 20px auto;
+}
+.notfound h2{
+	font-weight: bolder;
+	font-size: 2.5rem;
+	margin-bottom: 120px;
+}
+.notfound a{
+	padding: 13px 18px;
+	background-color: #415b90;
+	color: white;
+	border-radius: 5px;
+	font-weight: 600;
+}
+.notfound a:hover{
+	text-decoration: none;
+}
 @media screen and (max-width: 940px){
 	.answer,.mainquestion,.heading-bg{
 		width: 70%;
@@ -285,6 +322,10 @@ nav ul li{
 @media screen and (max-width: 750px){
 	.answer,.mainquestion,.heading-bg{
 		width: 80%;
+	}
+	.notfound a{
+		padding: 10px 15px;
+		font-weight: 600;
 	}
 }
 @media screen and (max-width: 540px){
@@ -302,5 +343,13 @@ nav ul li{
 	}
 	.code{
 		font-size: 1.7rem;
+	}
+	.notfound{
+		width: 80%;
+		margin: 20px auto;
+	}
+	.notfound a{
+		padding: 7px 10px;
+		font-weight: 400;
 	}
 }
